@@ -17,6 +17,7 @@ BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
+Obsoletes:	php-pear-PHP_ArrayOf-tests
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,20 +32,6 @@ Pakiet ten pozwala na tworzenie klas zbliżonych do ArrayObject z
 dodatkowymi ograniczeniami dotyczącymi typu elementu lub indeksu.
 
 Ta klasa ma w PEAR status: %{_status}.
-
-%package tests
-Summary:	Tests for PEAR::%{_pearname}
-Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
-Group:		Development/Languages/PHP
-AutoReq:	no
-Requires:	%{name} = %{version}-%{release}
-AutoProv:	no
-
-%description tests
-Tests for PEAR::%{_pearname}.
-
-%description tests -l pl.UTF-8
-Testy dla PEAR::%{_pearname}.
 
 %prep
 %pear_package_setup
@@ -64,7 +51,3 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/PHP/ArrayOf
 %{php_pear_dir}/PHP/ArrayOf.php
 %{php_pear_dir}/PHP/ArrayOfInterface.php
-
-%files tests
-%defattr(644,root,root,755)
-%{php_pear_dir}/tests/PHP_ArrayOf
